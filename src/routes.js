@@ -13,7 +13,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 /**
  * @routes {array} of routes
  * @returns two type routes:
- * 1. Account: All routes use for auth
+ * 1. Auth: All routes use for auth
  * 2. Main: All routes use for internal routing (Private routes)
  */
 
@@ -24,13 +24,13 @@ const routes = [
     component: AuthLayout,
     routes: [
       {
-        path: "/login",
+        path: "/auth/login",
         exact: true,
         component: Login,
         key: "login-page",
       },
       {
-        path: "/register",
+        path: "/auth/register",
         exact: true,
         component: Register,
         key: "register-page",
@@ -50,13 +50,13 @@ const routes = [
         path: "/",
         exact: true,
         component: HomePage,
-        key: "homepage",
+        key: "homepage-default",
       },
       {
-        path: "/register",
+        path: "/home",
         exact: true,
-        component: Register,
-        key: "register",
+        component: HomePage,
+        key: "homepage",
       },
       {
         path: "/contact-us",

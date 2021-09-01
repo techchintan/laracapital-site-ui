@@ -19,7 +19,7 @@ export default function Navigation() {
   }
 
   const handleLogout = () => {
-    localStorage.removeItem("laracapitalAuthToken");
+    localStorage.removeItem("laraCapitalAuthToken");
     history.push("/");
   };
 
@@ -32,7 +32,7 @@ export default function Navigation() {
           </Link>
         </Menu.Item>
         <Menu.Item key={1} style={{ marginLeft: "250px" }}>
-          <Link to="/">Home</Link>
+          <Link to="/home">Home</Link>
         </Menu.Item>
         <Menu.Item key={2}>
           <Link to="/about-us">About us</Link>
@@ -47,7 +47,10 @@ export default function Navigation() {
           <Link to="/auth/register">Register</Link>
         </Menu.Item>
         <Menu.Item key={4} style={{ float: "right", paddingTop: "10px" }}>
-          <button className="common-button">
+          <button
+            className="common-button"
+            onClick={() => history.push("/contact-us")}
+          >
             <span>Contact US</span>
           </button>
         </Menu.Item>

@@ -1,6 +1,6 @@
 import React from "react";
-import { renderRoutes } from "react-router-config";
 import { Layout } from "antd";
+import { renderRoutes } from "react-router-config";
 
 import "./style.scss";
 import CommonFooter from "../../components/CommonFooter";

@@ -1,0 +1,35 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": ["react"],
+  "rules": {
+    "indent": "off",
+    "semi": ["error", "always"],
+    "explicit-module-boundary-types": "off",
+    "no-explicit-any": "off",
+    "no-var-requires": "off",
+    "explicit-function-return-type": "off",
+    "explicit-member-accessibility": "off",
+    "no-use-before-define": "off",
+    "no-unused-vars": 2,
+    "no-console": 2,
+    "react/prop-types": 0,
+    "no-prototype-builtins": 0,
+    "no-undef": 0
+  }
+}
