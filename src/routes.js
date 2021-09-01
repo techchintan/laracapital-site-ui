@@ -1,12 +1,13 @@
 import MainLayout from "./layout/MainLayout";
-import AdminLayout from "./layout/AdminLayout";
+import AuthLayout from "./layout/AuthLayout";
 
-import { withAuth } from "./hoc";
-import LaraCapitalLanding from "./pages/Landing";
+// import { withAuth } from "./hoc";
+import HomePage from "./pages/Landing";
 import ContactUs from "./pages/ContactUs";
 import AboutUs from "./pages/AboutUs";
 import Blog from "./pages/Blog";
 import Register from "./pages/Register";
+import Login from "./pages/Login";
 import NotFoundPage from "./pages/NotFoundPage";
 
 /**
@@ -18,9 +19,22 @@ import NotFoundPage from "./pages/NotFoundPage";
 
 const routes = [
   {
-    path: "/admin",
-    component: withAuth(AdminLayout),
+    /* Enable withAuth once done with auth api */
+    path: "/auth",
+    component: AuthLayout,
     routes: [
+      {
+        path: "/login",
+        exact: true,
+        component: Login,
+        key: "login-page",
+      },
+      {
+        path: "/register",
+        exact: true,
+        component: Register,
+        key: "register-page",
+      },
       {
         path: "*",
         component: NotFoundPage,
@@ -35,7 +49,7 @@ const routes = [
       {
         path: "/",
         exact: true,
-        component: LaraCapitalLanding,
+        component: HomePage,
         key: "homepage",
       },
       {
