@@ -1,7 +1,36 @@
-.site-layout-background {
-  margin-top: 10em;
-}
+.main-layout {
+  .ant-layout {
+    .ant-layout-header {
+      .logo {
+        height: 50px;
+        padding: 8px 0px;
+      }
+    }
 
-.custom-footer {
-  background: #d3dbe7 !important;
+    .site-layout {
+      padding: 0px 20px;
+      margin-top: 64px;
+
+      .site-layout-background {
+        padding: 24px 0px;
+        min-height: 380px;
+      }
+    }
+
+    .custom-footer {
+      background: #00897b;
+      color: #fff;
+      font-size: 15px;
+      padding: 24px 20px;
+
+      a {
+        color: #fff;
+
+        &:hover,
+        &:focus {
+          opacity: 0.6;
+        }
+      }
+    }
+  }
 }
