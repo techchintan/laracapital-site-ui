@@ -1,22 +1,53 @@
+.main-layout .ant-layout .site-layout {
+  padding: 0 !important;
+}
 .home-layout {
-  .user_guid_container {
-    margin-top: 10px;
-    padding: 20px;
-    border: 1px solid #f0f0f0;
-    box-shadow: 0 2px 26px #42424285;
+  .hero-image {
+    height: 86vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+      url(../../assets/images/home_landing.jpg);
+    background-position: center;
+    background-size: cover;
+    color: #ffffff;
 
-    .title {
-      color: #9e9e9e;
+    .hero-text {
+      position: absolute;
+      left: 50px;
+      top: 35%;
+
+      .hero-title {
+        color: #ffffff;
+        font-size: 50px;
+        width: 450px;
+      }
+      .hero-subtitle {
+        color: #f2f2f2;
+        width: 700px;
+      }
+      .hero-button {
+        padding: 22px;
+        margin: 15px 0;
+        line-height: 0;
+        font-size: 20px;
+      }
     }
+  }
+}
 
-    .intro-image {
-      width: 100px;
-      height: 100px;
-    }
-
-    .right-arrow {
-      width: 100px;
-      height: 50px;
+@media (max-width: 768px) {
+  .home-layout {
+    .hero-image {
+      .hero-text {
+        left: 20px;
+        .hero-title {
+          font-size: 30px;
+          width: auto;
+        }
+        .hero-subtitle {
+          width: auto;
+          font-size: 20px;
+        }
+      }
     }
   }
 }

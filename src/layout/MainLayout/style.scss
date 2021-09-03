@@ -12,19 +12,18 @@
       margin-top: 64px;
 
       .site-layout-background {
-        padding: 24px 0px;
         min-height: 380px;
       }
     }
 
     .custom-footer {
-      background: #00897b;
-      color: #fff;
+      background: #fff;
+      color: #1890ff;
       font-size: 15px;
-      padding: 24px 20px;
+      padding: 24px 0px 0px 0px;
 
       a {
-        color: #fff;
+        color: #1890ff;
 
         &:hover,
         &:focus {

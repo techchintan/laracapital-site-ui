@@ -1,29 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Menu, Layout, Button, Drawer } from "antd";
 import { BarsOutlined } from "@ant-design/icons";
+
+import "./style.scss";
 
 import useWindowSize from "../../hooks/useWindowSize";
 import BrandLogo from "../../assets/images/company-logo.svg";
 
-const header_css = `
-.header-container{
-  background: #ffffff;
-  box-shadow: 0 2px 26px #42424285;
-  position: fixed;
-  z-index: 10;
-  width: 100%;
-  height:66px;
-  padding:0 20px;
-
-}
-.avatar-profile{
-  border: 1px solid #f0f0f0;
-  text-transform: capitalize;
-}
-`;
-
 export default function Navigation() {
+  const history = useHistory();
   const { width: windowWidth } = useWindowSize();
   const [isMobileMenu, setIsMobileMenu] = React.useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
@@ -42,35 +28,95 @@ export default function Navigation() {
 
   function DesktopNavbar() {
     return (
-      <Menu theme="light" mode="horizontal">
+      <Menu theme="light" mode="horizontal" className="font-bold font-16px">
         <Menu.Item key={101} style={{ padding: 0, border: "none" }}>
           <Link to="/">
             <img className="logo" alt="logo" src={BrandLogo} />
           </Link>
         </Menu.Item>
-        <Menu.Item key={0} style={{ border: "none" }}>
-          <Link to="/events">Events</Link>
+        <Menu.Item key={0} style={{ border: "none", marginLeft: "20px" }}>
+          <Link
+            to="/home"
+            className={
+              history.location?.pathname === "/" ||
+              history.location?.pathname === "/home"
+                ? "active-nav-item"
+                : "default-nav-item"
+            }
+          >
+            Home
+          </Link>
         </Menu.Item>
         <Menu.Item key={0} style={{ border: "none" }}>
-          <Link to="/customers">Customers</Link>
+          <Link
+            to="/events"
+            className={
+              history.location?.pathname === "/events"
+                ? "active-nav-item"
+                : "default-nav-item"
+            }
+          >
+            Events
+          </Link>
         </Menu.Item>
         <Menu.Item key={0} style={{ border: "none" }}>
-          <Link to="/contact-us">Contact us</Link>
+          <Link
+            to="/customers"
+            className={
+              history.location?.pathname === "/customers"
+                ? "active-nav-item"
+                : "default-nav-item"
+            }
+          >
+            Customers
+          </Link>
+        </Menu.Item>
+        <Menu.Item key={0} style={{ border: "none" }}>
+          <Link
+            to="/contact-us"
+            className={
+              history.location?.pathname === "/contact-us"
+                ? "active-nav-item"
+                : "default-nav-item"
+            }
+          >
+            Contact us
+          </Link>
         </Menu.Item>
         <Menu.Item key={1} style={{ border: "none" }}>
-          <Link to="/about-us">About us</Link>
+          <Link
+            to="/about-us"
+            className={
+              history.location?.pathname === "/about-us"
+                ? "active-nav-item"
+                : "default-nav-item"
+            }
+          >
+            About us
+          </Link>
         </Menu.Item>
         <Menu.Item
           key={3}
           style={{ float: "right", padding: 0, border: "none", marginLeft: 10 }}
         >
-          <Link to="/auth/login">Log In</Link>
+          <Button
+            type="primary"
+            className="font-bold"
+            onClick={() => history.push("/auth/login")}
+          >
+            Log In
+          </Button>
         </Menu.Item>
         <Menu.Item
           key={3}
           style={{ float: "right", padding: 0, border: "none" }}
         >
-          <Link to="/auth/register">Register</Link>
+          <Button
+            className="font-bold gray-font"
+            onClick={() => history.push("/auth/register")}
+          >
+            Register
+          </Button>
         </Menu.Item>
       </Menu>
     );
@@ -146,7 +192,6 @@ export default function Navigation() {
 
   return (
     <>
-      <style>{header_css}</style>
       {isMobileMenu && (
         <Drawer
           title={

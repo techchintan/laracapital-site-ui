@@ -6,6 +6,7 @@ import { routes } from "../routes";
 
 import "../assets/styles/global.scss";
 import "../assets/styles/fonts.css";
+import "../assets/styles/utils.css";
 
 const Loader = (
   <div style={{ width: "3rem", height: "3rem" }}>

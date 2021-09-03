@@ -1,71 +1,83 @@
 import React from "react";
 import { Row, Col } from "antd";
-import {
-  WhatsAppOutlined,
-  FacebookOutlined,
-  PhoneOutlined,
-  HomeOutlined,
-  InstagramOutlined,
-  MailOutlined,
-  InfoCircleOutlined,
-  WarningOutlined,
-  CheckCircleOutlined,
-} from "@ant-design/icons";
+import { PhoneOutlined, HomeOutlined, MailOutlined } from "@ant-design/icons";
 
 export default function CommonFooter() {
   return (
     <>
-      <Row gutter={[8, 8]}>
+      <Row
+        gutter={[8, 8]}
+        style={{
+          justifyContent: "center",
+        }}
+      >
         <Col md={6}>
-          <Row gutter={[8, 8]} style={{ flexFlow: "column" }}>
+          <Row
+            gutter={[8, 8]}
+            style={{ flexFlow: "column", textAlign: "start" }}
+          >
             <Col>
-              <WarningOutlined style={{ marginRight: 10 }} />
-              <a href="/">Terms Condition</a>
+              <a className="gray-font" href="/about-us">
+                About Us
+              </a>
             </Col>
             <Col>
-              <InfoCircleOutlined style={{ marginRight: 10 }} />
-              <a href="/">Privacy</a>
+              <a className="gray-font" href="/contact-us">
+                Contact Us
+              </a>
             </Col>
             <Col>
-              <CheckCircleOutlined style={{ marginRight: 10 }} />
-              <a href="/">Quality assurance</a>
+              <a className="gray-font" href="/privacy-policy">
+                Privacy Policy
+              </a>
             </Col>
           </Row>
         </Col>
 
         <Col md={6}>
-          <Row gutter={[8, 8]} style={{ flexFlow: "column" }}>
+          <Row
+            gutter={[8, 8]}
+            style={{ flexFlow: "column", textAlign: "start" }}
+          >
             <Col>
               <PhoneOutlined style={{ marginRight: 10 }} />
-              <a href="tel:123-456-7890">123-456-7890</a>
+              <a className="gray-font" href="tel:123-456-7890">
+                123-456-7890
+              </a>
             </Col>
             <Col>
               <MailOutlined style={{ marginRight: 10 }} />
-              <a href="mailto:studearn@gmail.com">studearn@gmail.com</a>
+              <a className="gray-font" href="mailto:laracapital@gmail.com">
+                laracapital@gmail.com
+              </a>
             </Col>
             <Col>
               <HomeOutlined style={{ marginRight: 10 }} />
-              <span>Office address</span>
+              <span className="gray-font">Office Addres: </span> <br />
+              <span className="gray-font">
+                3873 Cherry Tree Drive, <br /> Jacksonville, Florida 32223.
+              </span>
             </Col>
           </Row>
         </Col>
       </Row>
 
-      <Row style={{ marginTop: 20 }}>
+      <Row
+        style={{
+          marginTop: 32,
+          backgroundColor: "#f8f8f8",
+          justifyContent: "center",
+        }}
+        className="gray-font font-12px"
+      >
         <Col md={8}>
-          <Row gutter={[8, 8]}>
-            <Col>
-              <WhatsAppOutlined style={{ marginRight: 10 }} />
-              {/* <a href="/">Whatapp</a> */}
-            </Col>
-            <Col>
-              <FacebookOutlined style={{ marginRight: 10 }} />
-              {/* <a href="/">Facebook</a> */}
-            </Col>
-            <Col>
-              <InstagramOutlined style={{ marginRight: 10 }} />
-              {/* <a href="/">Instagram</a> */}
-            </Col>
+          <Row
+            gutter={[8, 8]}
+            style={{
+              justifyContent: "center",
+            }}
+          >
+            © Copyrightn 2021, Lara Capital.
           </Row>
         </Col>
       </Row>
