@@ -12,7 +12,6 @@ export default function AuthLayout(props) {
   return (
     <>
       <Content className="site-layout">
-        AuthLayout
         <div className="site-layout-background">
           {renderRoutes(route.routes)}
         </div>

@@ -1,0 +1,115 @@
+.left_side {
+  background-blend-mode: screen;
+  background-size: cover;
+  background-color: linear-gradient(
+    to right,
+    #00c9ff 0%,
+    #92fe9d 51%,
+    #00c9ff 100%
+  );
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url(../../assets/images/authbg.png);
+  background-repeat: no-repeat;
+  background-origin: content-box;
+  width: 50%;
+  height: 100vh;
+  position: fixed;
+}
+
+.banner_head {
+  color: #fff;
+  line-height: 58px;
+  max-width: 500px;
+  font-weight: 500;
+  padding-top: 228px;
+  padding-left: 107px;
+}
+
+.right_side {
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 3rem;
+  float: right;
+}
+
+@media (max-width: 768px) and (min-width: 320px) {
+  .left_side {
+    display: none;
+  }
+  .right_side {
+    width: 100%;
+    margin-top: 3rem;
+    padding: 50px;
+  }
+  .img_position {
+    position: absolute;
+    left: 140px;
+    top: 30px;
+  }
+}
+
+.pl-1 {
+  padding-left: 0.5rem;
+}
+
+#login-form input {
+  font-size: 16px;
+  font-weight: normal;
+  color: #1a1c45;
+}
+
+#login-form input::placeholder {
+  color: #8c8da2;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.switchers {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.lang-switcher button {
+  margin-right: 10px;
+  height: 35px;
+  font-size: 16px;
+  letter-spacing: 0.9px;
+  box-shadow: none;
+  line-height: 25px;
+}
+
+.lang-switcher button:last-child {
+  margin-right: 0;
+}
+
+.theme-switcher button {
+  margin-right: 10px;
+  height: 35px;
+  font-size: 16px;
+  letter-spacing: 0.9px;
+  box-shadow: none;
+  line-height: 25px;
+  padding: 0.2rem 1rem;
+  border-color: #d4d4d4;
+  background-color: rgba(211, 211, 211, 0.438);
+  border-radius: 3px !important;
+  border: 0px solid !important;
+}
+
+.theme-switcher button:first-child {
+  color: white;
+}
+
+.theme-switcher button:last-child {
+  margin-right: 0;
+  color: #fff;
+}
+
+.client-logo {
+  width: 200px !important;
+  vertical-align: middle;
+}

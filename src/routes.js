@@ -2,7 +2,7 @@ import MainLayout from "./layout/MainLayout";
 import AuthLayout from "./layout/AuthLayout";
 
 // import { withAuth } from "./hoc";
-import HomePage from "./pages/Landing";
+import HomePage from "./pages/Home";
 import ContactUs from "./pages/ContactUs";
 import AboutUs from "./pages/AboutUs";
 import Blog from "./pages/Blog";
