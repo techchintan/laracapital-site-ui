@@ -28,28 +28,7 @@
 .right_side {
   width: 50%;
   margin: 0 auto;
-  margin-top: 3rem;
   float: right;
-}
-
-@media (max-width: 768px) and (min-width: 320px) {
-  .left_side {
-    display: none;
-  }
-  .right_side {
-    width: 100%;
-    margin-top: 3rem;
-    padding: 50px;
-  }
-  .img_position {
-    position: absolute;
-    left: 140px;
-    top: 30px;
-  }
-}
-
-.pl-1 {
-  padding-left: 0.5rem;
 }
 
 #login-form input {
@@ -64,52 +43,51 @@
   font-weight: normal;
 }
 
-.switchers {
-  position: absolute;
-  bottom: 20px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 20px;
+.client-logo {
+  width: 200px !important;
+  display: table;
+  margin: 50px auto;
 }
 
-.lang-switcher button {
-  margin-right: 10px;
-  height: 35px;
-  font-size: 16px;
-  letter-spacing: 0.9px;
-  box-shadow: none;
-  line-height: 25px;
+.login-text {
+  display: table;
+  margin: 0 auto;
+  width: 64%;
 }
 
-.lang-switcher button:last-child {
-  margin-right: 0;
+.login-title {
+  display: table;
+  margin: 0 auto;
 }
 
-.theme-switcher button {
-  margin-right: 10px;
-  height: 35px;
-  font-size: 16px;
-  letter-spacing: 0.9px;
-  box-shadow: none;
-  line-height: 25px;
-  padding: 0.2rem 1rem;
-  border-color: #d4d4d4;
-  background-color: rgba(211, 211, 211, 0.438);
-  border-radius: 3px !important;
-  border: 0px solid !important;
+.ant-input-affix-wrapper-lg {
+  padding: 0 !important;
 }
 
-.theme-switcher button:first-child {
-  color: white;
-}
-
-.theme-switcher button:last-child {
-  margin-right: 0;
+.ant-input-prefix {
+  padding: 10px;
+  background-color: #40a9ff;
   color: #fff;
 }
 
-.client-logo {
-  width: 200px !important;
-  vertical-align: middle;
+.login-register-link {
+  display: flex;
+  justify-content: center;
+}
+
+.login-form-forgot {
+  float: right;
+}
+
+@media (max-width: 768px) and (min-width: 320px) {
+  .left_side {
+    display: none;
+  }
+  .right_side {
+    width: 100%;
+    padding: 0;
+  }
+  .login-text {
+    width: auto !important;
+  }
 }

@@ -14,7 +14,8 @@ export default function Home() {
         <div className="hero-text">
           <Title className="hero-title">
             Lara is your wealth <br />
-            <span className="blue-font">Asset management</span><br />
+            <span className="blue-font">Asset management</span>
+            <br />
             Company.
           </Title>
           <Title level={5} className="hero-subtitle">

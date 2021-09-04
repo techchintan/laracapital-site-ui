@@ -1,27 +1,4 @@
 /* Here we have to define our global css which is same for entire project. */
-.common-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: auto;
-  height: 40px;
-  padding: 12px 32px;
-  background-color: #fff;
-  border-color: #0084bf;
-  cursor: pointer;
-
-  span {
-    font-family: "HelveticaNeue Regular";
-    font-style: normal;
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 16px;
-    letter-spacing: 0.1em;
-    text-transform: capitalize;
-    color: #0084bf;
-  }
-}
-
 .ant-layout-header {
   background: white !important;
 }
@@ -42,4 +19,8 @@
 
 .ant-layout-footer {
   text-align: center !important;
+}
+
+.ant-form-item {
+  margin-bottom: 16px;
 }

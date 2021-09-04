@@ -1,10 +1,16 @@
 import React from "react";
-import clsx from "clsx";
-import { Button } from "antd";
+import { Button, Form, Input } from "antd";
 import { Link } from "react-router-dom";
+import {
+  EyeTwoTone,
+  EyeInvisibleOutlined,
+  UserOutlined,
+  MailOutlined,
+  LockOutlined,
+  UnlockOutlined,
+} from "@ant-design/icons";
 
 import BrandLogo from "../../assets/images/company-logo.svg";
-
 import "./style.scss";
 
 function Register() {
@@ -28,33 +34,52 @@ function Register() {
                   className="client-logo"
                 />
               </div>
-              <div>
-                <h2 className="text-center py-3">Register</h2>
-                <form>
-                  <div className="form-group position_relative">
-                    <input
-                      type="number"
-                      className={clsx("form-control")}
-                      placeholder="Enter Mobile Number"
-                      name="mobileNumber"
+              <div className="login-text">
+                <h1 className="login-title">Registration</h1>
+                <Form layout="vertical">
+                  <Form.Item label="Username" required>
+                    <Input
+                      placeholder="Enter your username"
+                      prefix={<UserOutlined />}
+                      size="large"
                     />
-                  </div>
-                  <div className="form-group position_relative">
-                    <input
-                      type="password"
-                      className={clsx("form-control")}
-                      placeholder="Enter your Password"
+                  </Form.Item>
+                  <Form.Item label="Email Address" required>
+                    <Input
+                      placeholder="Enter your email"
+                      prefix={<MailOutlined />}
+                      size="large"
                     />
-                    <p className="text-right pt-2">
-                      <Link to="/auth/forgotPassword">Forgot Password?</Link>
+                  </Form.Item>
+                  <Form.Item required label="Password">
+                    <Input.Password
+                      placeholder="Enter your password"
+                      iconRender={(visible) =>
+                        visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+                      }
+                      prefix={<UnlockOutlined />}
+                      size="large"
+                    />
+                  </Form.Item>
+                  <Form.Item label="Confirm Password" required>
+                    <Input
+                      placeholder="Confirm your password"
+                      prefix={<LockOutlined />}
+                      size="large"
+                    />
+                  </Form.Item>
+                  <Form.Item>
+                    <Button type="primary" block size="large">
+                      Register
+                    </Button>
+                  </Form.Item>
+                  <div className="login-register-link">
+                    <p className="text-center">
+                      Already have an account?{" "}
+                      <Link to="/auth/login">Log in</Link>
                     </p>
                   </div>
-                  <Button type="primary">Login</Button>
-                  <p className="text-center">
-                    Already user?
-                    <Link to="/auth/login">Login here</Link>
-                  </p>
-                </form>
+                </Form>
               </div>
             </div>
           </div>

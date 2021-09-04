@@ -1,66 +1,72 @@
 import React from "react";
-import clsx from "clsx";
-import { Button } from "antd";
+import { Button, Form, Input } from "antd";
 import { Link } from "react-router-dom";
+import {
+  EyeTwoTone,
+  EyeInvisibleOutlined,
+  MailOutlined,
+  LockOutlined,
+} from "@ant-design/icons";
 
 import BrandLogo from "../../assets/images/company-logo.svg";
-
 import "./style.scss";
 
 function Login() {
   return (
-    <>
-      <div className="login-wrapper">
-        <div className="row no-gutters">
-          <div className="col-md-6">
-            <div className="left_side">
-              <h1 className="banner_head">
-                Lara is your wealth asset <br /> Management company.
-              </h1>
-            </div>
+    <div className="login-wrapper">
+      <div className="row no-gutters">
+        <div className="col-md-6">
+          <div className="left_side">
+            <h1 className="banner_head">
+              Lara is your wealth asset <br /> Management company.
+            </h1>
           </div>
-          <div className="col-md-6">
-            <div className="right_side">
-              <div className="text-center">
-                <img
-                  src={BrandLogo}
-                  alt="client-logo"
-                  className="client-logo"
-                />
-              </div>
-              <div>
-                <h2 className="text-center py-3">Login</h2>
-                <form>
-                  <div className="form-group position_relative">
-                    <input
-                      type="number"
-                      className={clsx("form-control")}
-                      placeholder="Enter Mobile Number"
-                      name="mobileNumber"
-                    />
-                  </div>
-                  <div className="form-group position_relative">
-                    <input
-                      type="password"
-                      className={clsx("form-control")}
-                      placeholder="Enter your Password"
-                    />
-                    <p className="text-right pt-2">
-                      <Link to="/auth/forgotPassword">Forgot Password?</Link>
-                    </p>
-                  </div>
-                  <Button type="primary">Login</Button>
-                  <p className="text-center py-2">
-                    Don&apos;t have an account yet?
-                    <Link to="/auth/register">Register here</Link>
+        </div>
+        <div className="col-md-6">
+          <div className="right_side">
+            <div className="text-center">
+              <img src={BrandLogo} alt="client-logo" className="client-logo" />
+            </div>
+            <div className="login-text">
+              <h1 className="login-title">Log in</h1>
+              <Form layout="vertical">
+                <Form.Item label="Email Address" required>
+                  <Input
+                    placeholder="Enter your email address"
+                    prefix={<MailOutlined />}
+                    size="large"
+                  />
+                </Form.Item>
+                <Form.Item required label="Password">
+                  <Input.Password
+                    placeholder="Enter your password"
+                    iconRender={(visible) =>
+                      visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+                    }
+                    prefix={<LockOutlined />}
+                    size="large"
+                  />
+                  <span className="login-form-forgot">
+                    <Link to="/auth/forgotPassword"> Forgot password?</Link>
+                  </span>
+                </Form.Item>
+                <Form.Item>
+                  <Button type="primary" block size="large">
+                    Login
+                  </Button>
+                </Form.Item>
+                <div className="login-register-link">
+                  <p className="text-center">
+                    Not registered yet?{" "}
+                    <Link to="/auth/register">Register</Link>
                   </p>
-                </form>
-              </div>
+                </div>
+              </Form>
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
