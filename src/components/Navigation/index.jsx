@@ -1,7 +1,7 @@
 import React from "react";
+import { BarsOutlined } from "@ant-design/icons";
 import { Link, useHistory } from "react-router-dom";
 import { Menu, Layout, Button, Drawer } from "antd";
-import { BarsOutlined } from "@ant-design/icons";
 
 import "./style.scss";
 
@@ -32,67 +32,6 @@ export default function Navigation() {
         <Menu.Item key={101} style={{ padding: 0, border: "none" }}>
           <Link to="/">
             <img className="logo" alt="logo" src={BrandLogo} />
-          </Link>
-        </Menu.Item>
-        <Menu.Item key={0} style={{ border: "none", marginLeft: "20px" }}>
-          <Link
-            to="/home"
-            className={
-              history.location?.pathname === "/" ||
-              history.location?.pathname === "/home"
-                ? "active-nav-item"
-                : "default-nav-item"
-            }
-          >
-            Home
-          </Link>
-        </Menu.Item>
-        <Menu.Item key={0} style={{ border: "none" }}>
-          <Link
-            to="/events"
-            className={
-              history.location?.pathname === "/events"
-                ? "active-nav-item"
-                : "default-nav-item"
-            }
-          >
-            Events
-          </Link>
-        </Menu.Item>
-        <Menu.Item key={0} style={{ border: "none" }}>
-          <Link
-            to="/customers"
-            className={
-              history.location?.pathname === "/customers"
-                ? "active-nav-item"
-                : "default-nav-item"
-            }
-          >
-            Customers
-          </Link>
-        </Menu.Item>
-        <Menu.Item key={0} style={{ border: "none" }}>
-          <Link
-            to="/contact-us"
-            className={
-              history.location?.pathname === "/contact-us"
-                ? "active-nav-item"
-                : "default-nav-item"
-            }
-          >
-            Contact us
-          </Link>
-        </Menu.Item>
-        <Menu.Item key={1} style={{ border: "none" }}>
-          <Link
-            to="/about-us"
-            className={
-              history.location?.pathname === "/about-us"
-                ? "active-nav-item"
-                : "default-nav-item"
-            }
-          >
-            About us
           </Link>
         </Menu.Item>
         <Menu.Item
@@ -150,42 +89,15 @@ export default function Navigation() {
     return (
       <Menu style={{ border: "none" }}>
         <Menu.Item key={0}>
-          <Link onClick={() => toggleMobileMenuOpen()} to={"/contact-us"}>
-            Contact us
+          <Link onClick={() => toggleMobileMenuOpen()} to="/auth/login">
+            Login
           </Link>
         </Menu.Item>
         <Menu.Item key={1}>
-          <Link onClick={() => toggleMobileMenuOpen()} to={"/about-us"}>
-            About us
+          <Link onClick={() => toggleMobileMenuOpen()} to="/auth/register">
+            Register
           </Link>
         </Menu.Item>
-        {authUser && (
-          <Menu.Item key={2}>
-            <Link onClick={() => toggleMobileMenuOpen()} to={"/profile/user"}>
-              Profile
-            </Link>
-          </Menu.Item>
-        )}
-        {authUser && (
-          <Menu.Item key={100}>
-            <Link
-              onClick={() => {
-                handleLogout();
-                toggleMobileMenuOpen();
-              }}
-              to={"/"}
-            >
-              Sign out
-            </Link>
-          </Menu.Item>
-        )}
-        {!authUser && (
-          <Menu.Item key={2}>
-            <Link onClick={() => toggleMobileMenuOpen()} to={"/account"}>
-              Login
-            </Link>
-          </Menu.Item>
-        )}
       </Menu>
     );
   }
@@ -196,8 +108,8 @@ export default function Navigation() {
         <Drawer
           title={
             <img
-              style={{ width: "100%", padding: 5, height: 65 }}
-              alt="logo"
+              style={{ width: "100%", padding: 8, height: 50, marginLeft: -30 }}
+              alt="BrandLogo"
               src={BrandLogo}
             />
           }

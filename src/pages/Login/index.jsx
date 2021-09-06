@@ -11,7 +11,7 @@ import {
 import BrandLogo from "../../assets/images/company-logo.svg";
 import "./style.scss";
 
-function Login() {
+export default function Login() {
   return (
     <div className="login-wrapper">
       <div className="row no-gutters">
@@ -69,5 +69,3 @@ function Login() {
     </div>
   );
 }
-
-export default Login;

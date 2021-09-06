@@ -28,7 +28,6 @@
 .right_side {
   width: 50%;
   margin: 0 auto;
-  margin-top: 3rem;
   float: right;
 }
 
@@ -55,7 +54,12 @@
   }
   .right_side {
     width: 100%;
-    margin-top: 3rem;
     padding: 0;
+  }
+  .login-text {
+    width: auto !important;
+  }
+  .ant-row {
+    display: block !important;
   }
 }

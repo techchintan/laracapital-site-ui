@@ -19,8 +19,13 @@
 
 .ant-layout-footer {
   text-align: center !important;
+  padding: 0 !important;
 }
 
 .ant-form-item {
-  margin-bottom: 16px;
+  margin-bottom: 16px !important;
+}
+
+.ant-picker {
+  width: 100% !important;
 }
