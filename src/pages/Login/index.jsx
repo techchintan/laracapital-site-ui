@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import {
   EyeTwoTone,
   EyeInvisibleOutlined,
-  MailOutlined,
+  UserOutlined,
   LockOutlined,
 } from "@ant-design/icons";
 
@@ -30,10 +30,10 @@ export default function Login() {
             <div className="login-text">
               <h1 className="login-title">Log in</h1>
               <Form layout="vertical">
-                <Form.Item label="Email Address" required>
+                <Form.Item label="Username" required>
                   <Input
-                    placeholder="Enter your email address"
-                    prefix={<MailOutlined />}
+                    placeholder="Enter your Username"
+                    prefix={<UserOutlined />}
                     size="large"
                   />
                 </Form.Item>
