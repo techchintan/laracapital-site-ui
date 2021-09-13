@@ -1,6 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Row, Col, Button, Form, Input, DatePicker } from "antd";
+import moment from "moment";
+import { Link, useHistory } from "react-router-dom";
+import { useMutation } from "react-query";
+import { Row, Col, Button, Form, Input, DatePicker, message } from "antd";
 import {
   EyeTwoTone,
   EyeInvisibleOutlined,
@@ -8,12 +10,84 @@ import {
   UserOutlined,
   LockOutlined,
   UnlockOutlined,
+  MailOutlined,
 } from "@ant-design/icons";
 
+import { requestUserRegister } from "../../services/auth";
 import BrandLogo from "../../assets/images/company-logo.svg";
+
 import "./style.scss";
 
+const validationRules = {
+  employeeId: [{ required: true, message: "Please enter your Employee Id" }],
+  firstName: [{ required: true, message: "Please enter your First Name" }],
+  lastName: [{ required: true, message: "Please enter your Last Name" }],
+  emailAddress: [
+    { required: true, message: "Please enter your Email Address" },
+  ],
+  dateOfBirth: [
+    {
+      required: true,
+      message: "Please enter your Date Of Birth",
+    },
+  ],
+  username: [{ required: true, message: "Please enter your Username" }],
+  password: [
+    { required: true, message: "Please enter your Password" },
+    { min: 8, message: "Password must be at least 8 characters " },
+  ],
+  confirmPassword: [
+    {
+      required: true,
+      message: "Please confirm your password!",
+    },
+    ({ getFieldValue }) => ({
+      validator(_rule, value) {
+        if (!value || getFieldValue("password") === value) {
+          return Promise.resolve();
+        }
+        return Promise.reject(
+          "The two passwords that you entered do not match!",
+        );
+      },
+    }),
+  ],
+};
+
 export default function Register() {
+  const history = useHistory();
+  const {
+    mutate: registrationMutation,
+    isLoading: fetchingRegistration,
+    isSuccess: successfullyRegistered,
+  } = useMutation((data) => requestUserRegister(data));
+
+  const onFinish = (values) => {
+    const body = {
+      firstName: values.firstName,
+      lastName: values.lastName,
+      emailAddress: values.emailAddress,
+      password: values.password,
+      dob: moment(values.dateOfBirth).format("DD-MM-YYYY"),
+      userName: values.username,
+      cellPhone: "9876543210",
+      homePhone: "9876543211",
+      locationId: 107,
+      organizationId: 177,
+      supervisorId: 127,
+    };
+    registrationMutation(body);
+  };
+
+  React.useEffect(() => {
+    if (successfullyRegistered) {
+      history.push("/auth/login");
+      setTimeout(() => {
+        message.success("User Successfully Registered");
+      }, 1000);
+    }
+  }, [successfullyRegistered, history]);
+
   return (
     <div className="login-wrapper">
       <div className="row no-gutters">
@@ -31,8 +105,12 @@ export default function Register() {
             </div>
             <div className="login-text">
               <h1 className="login-title">Registration</h1>
-              <Form layout="vertical">
-                <Form.Item label="Employee ID" required>
+              <Form layout="vertical" onFinish={onFinish}>
+                <Form.Item
+                  label="Employee ID"
+                  name="employeeId"
+                  rules={validationRules.employeeId}
+                >
                   <Input
                     placeholder="Employee ID"
                     prefix={<IdcardOutlined />}
@@ -41,7 +119,11 @@ export default function Register() {
                 </Form.Item>
                 <Row gutter={6}>
                   <Col md={12}>
-                    <Form.Item label="First Name" required>
+                    <Form.Item
+                      label="First Name"
+                      name="firstName"
+                      rules={validationRules.firstName}
+                    >
                       <Input
                         placeholder="First Name"
                         prefix={<UserOutlined />}
@@ -50,7 +132,11 @@ export default function Register() {
                     </Form.Item>
                   </Col>
                   <Col md={12}>
-                    <Form.Item label="Last Name" required>
+                    <Form.Item
+                      label="Last Name"
+                      name="lastName"
+                      rules={validationRules.lastName}
+                    >
                       <Input
                         placeholder="Last Name"
                         prefix={<UserOutlined />}
@@ -59,10 +145,29 @@ export default function Register() {
                     </Form.Item>
                   </Col>
                 </Row>
-                <Form.Item name="date-picker" label="Date of birth" required>
+                <Form.Item
+                  label="Email Address"
+                  name="emailAddress"
+                  rules={validationRules.emailAddress}
+                >
+                  <Input
+                    placeholder="Email Address"
+                    prefix={<MailOutlined />}
+                    size="large"
+                  />
+                </Form.Item>
+                <Form.Item
+                  label="Date of birth"
+                  name="dateOfBirth"
+                  rules={validationRules.dateOfBirth}
+                >
                   <DatePicker size="large" placeholder="Select Date of birth" />
                 </Form.Item>
-                <Form.Item label="Username" required>
+                <Form.Item
+                  label="Username"
+                  name="username"
+                  rules={validationRules.username}
+                >
                   <Input
                     placeholder="Username"
                     prefix={<UserOutlined />}
@@ -71,7 +176,11 @@ export default function Register() {
                 </Form.Item>
                 <Row gutter={6}>
                   <Col md={12}>
-                    <Form.Item required label="Password">
+                    <Form.Item
+                      label="Password"
+                      name="password"
+                      rules={validationRules.password}
+                    >
                       <Input.Password
                         placeholder="Password"
                         iconRender={(visible) =>
@@ -83,7 +192,11 @@ export default function Register() {
                     </Form.Item>
                   </Col>
                   <Col md={12}>
-                    <Form.Item label="Confirm Password" required>
+                    <Form.Item
+                      label="Confirm Password"
+                      name="confirmPassword"
+                      rules={validationRules.confirmPassword}
+                    >
                       <Input.Password
                         placeholder="Confirm password"
                         iconRender={(visible) =>
@@ -96,8 +209,8 @@ export default function Register() {
                   </Col>
                 </Row>
                 <Form.Item>
-                  <Button type="primary" block size="large">
-                    Register
+                  <Button type="primary" block size="large" htmlType="submit">
+                    {fetchingRegistration ? "Loading" : "Register"}
                   </Button>
                 </Form.Item>
                 <div className="login-register-link">

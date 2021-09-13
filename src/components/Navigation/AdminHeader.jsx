@@ -5,7 +5,7 @@ import { LogoutOutlined } from "@ant-design/icons";
 export default function AdminHeader() {
   const menu = (
     <Menu>
-      <Menu.Item key="100" icon={<LogoutOutlined />}>
+      <Menu.Item key={100} icon={<LogoutOutlined />}>
         Logout
       </Menu.Item>
     </Menu>

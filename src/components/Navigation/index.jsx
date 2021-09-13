@@ -29,13 +29,13 @@ export default function Navigation() {
   function DesktopNavbar() {
     return (
       <Menu theme="light" mode="horizontal" className="font-bold font-16px">
-        <Menu.Item key={101} style={{ padding: 0, border: "none" }}>
+        <Menu.Item key={99} style={{ padding: 0, border: "none" }}>
           <Link to="/">
             <img className="logo" alt="logo" src={BrandLogo} />
           </Link>
         </Menu.Item>
         <Menu.Item
-          key={3}
+          key={102}
           style={{ float: "right", padding: 0, border: "none", marginLeft: 10 }}
         >
           <Button
@@ -47,7 +47,7 @@ export default function Navigation() {
           </Button>
         </Menu.Item>
         <Menu.Item
-          key={3}
+          key={103}
           style={{ float: "right", padding: 0, border: "none" }}
         >
           <Button
@@ -64,7 +64,7 @@ export default function Navigation() {
   function MobileNavbar() {
     return (
       <Menu theme="light" mode="horizontal">
-        <Menu.Item key={101} style={{ padding: 0, border: "none" }}>
+        <Menu.Item key={98} style={{ padding: 0, border: "none" }}>
           <Link to="/">
             <img className="logo" alt="logo" src={BrandLogo} />
           </Link>
