@@ -2,7 +2,16 @@ import React from "react";
 import moment from "moment";
 import { Link, useHistory } from "react-router-dom";
 import { useMutation } from "react-query";
-import { Row, Col, Button, Form, Input, DatePicker, message } from "antd";
+import {
+  Row,
+  Col,
+  Button,
+  Form,
+  Input,
+  DatePicker,
+  message,
+  Select,
+} from "antd";
 import {
   EyeTwoTone,
   EyeInvisibleOutlined,
@@ -17,6 +26,8 @@ import { requestUserRegister } from "../../services/auth";
 import BrandLogo from "../../assets/images/company-logo.svg";
 
 import "./style.scss";
+
+const { Option } = Select;
 
 const validationRules = {
   employeeId: [{ required: true, message: "Please enter your Employee Id" }],
@@ -54,27 +65,53 @@ const validationRules = {
   ],
 };
 
+const countries = {
+  India: ["Mumbai", "Pune", "Banglore", "Surat"],
+  USA: ["New York", "San Francisco", "Austin", "Dallas"],
+  Brazil: ["São Paulo", "Rio de Janeiro", "Salvador"],
+};
+
 export default function Register() {
   const history = useHistory();
+  const [cities, setCities] = React.useState([]);
+  const [selectedCounty, setSelectedCountry] = React.useState("");
+  const [selectedCity, setSelectedCity] = React.useState("");
   const {
     mutate: registrationMutation,
     isLoading: fetchingRegistration,
     isSuccess: successfullyRegistered,
   } = useMutation((data) => requestUserRegister(data));
 
+  const countryList = Object.keys(countries).map((key) => ({
+    name: key,
+  }));
+
+  function handleCountryChange(value) {
+    const citiesSel = value !== "" ? countries[value] : "";
+    setSelectedCountry(value);
+    setCities(citiesSel);
+    setSelectedCity("");
+  }
+
+  function handleStateChange(value) {
+    setSelectedCity(value);
+  }
+
   const onFinish = (values) => {
     const body = {
       firstName: values.firstName,
       lastName: values.lastName,
       emailAddress: values.emailAddress,
-      password: values.password,
       dob: moment(values.dateOfBirth).format("DD-MM-YYYY"),
+      country: selectedCounty,
+      location: selectedCity,
       userName: values.username,
-      cellPhone: "9876543210",
-      homePhone: "9876543211",
-      locationId: 107,
-      organizationId: 177,
-      supervisorId: 127,
+      password: values.password,
+      // cellPhone: "9876543210",
+      // homePhone: "9876543211",
+      // locationId: 107,
+      // organizationId: 177,
+      // supervisorId: 127,
     };
     registrationMutation(body);
   };
@@ -163,6 +200,40 @@ export default function Register() {
                 >
                   <DatePicker size="large" placeholder="Select Date of birth" />
                 </Form.Item>
+                <Row gutter={6}>
+                  <Col md={12}>
+                    <Form.Item label="Country" name="country" required>
+                      <Select
+                        style={{ width: "100%" }}
+                        placeholder="Select Country"
+                        value={selectedCounty}
+                        onChange={handleCountryChange}
+                      >
+                        {countryList.map((country, key) => (
+                          <Option key={key} value={country.name}>
+                            {country.name}
+                          </Option>
+                        ))}
+                      </Select>
+                    </Form.Item>
+                  </Col>
+                  <Col md={12}>
+                    <Form.Item label="State" name="state" required>
+                      <Select
+                        style={{ width: "100%" }}
+                        placeholder="Select State"
+                        value={selectedCity}
+                        onChange={handleStateChange}
+                      >
+                        {cities.map((city, key) => (
+                          <Option key={key} value={city}>
+                            {city}
+                          </Option>
+                        ))}
+                      </Select>
+                    </Form.Item>
+                  </Col>
+                </Row>
                 <Form.Item
                   label="Username"
                   name="username"
