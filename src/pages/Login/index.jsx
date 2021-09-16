@@ -1,16 +1,24 @@
 import React from "react";
+import _ from "lodash";
+import { UserAgentApplication } from "msal";
 import { useMutation } from "react-query";
-import { Button, Form, Input, message } from "antd";
+import { useSetRecoilState } from "recoil";
 import { Link, useHistory } from "react-router-dom";
+import { Button, Divider, Form, Input, message } from "antd";
 import {
   EyeTwoTone,
   EyeInvisibleOutlined,
   UserOutlined,
   LockOutlined,
+  WindowsOutlined,
 } from "@ant-design/icons";
-import { requestUserLogin } from "../../services/auth";
 
+import { requestUserLogin } from "../../services/auth";
+import { config } from "../../services/microsoftAuth/config";
 import BrandLogo from "../../assets/images/company-logo.svg";
+import { normalizeError, getUserProfile } from "../../utils/msAuth";
+import { userProfileDataAtom } from "../../recoils/auth";
+
 import "./style.scss";
 
 const validationRules = {
@@ -23,12 +31,25 @@ const validationRules = {
 
 export default function Login() {
   const history = useHistory();
+  const setUserProfileData = useSetRecoilState(userProfileDataAtom);
+  const [userProfileData, setProfileData] = React.useState({});
   const {
     mutate: loginMutation,
     isLoading: fetchingLogin,
     isSuccess: successfullyLoggedIn,
     isError: failedToLogin,
   } = useMutation((data) => requestUserLogin(data));
+
+  const userAgentApplication = new UserAgentApplication({
+    auth: {
+      clientId: config.clientId,
+      redirectUri: config.redirectUri,
+    },
+    cache: {
+      cacheLocation: "sessionStorage",
+      storeAuthStateInCookie: true,
+    },
+  });
 
   const onFinish = (values) => {
     const body = {
@@ -37,6 +58,23 @@ export default function Login() {
     };
     loginMutation(body);
   };
+
+  async function handleMicrosoftLogin() {
+    try {
+      await userAgentApplication.loginPopup({
+        scopes: config.scopes,
+        prompt: "select_account",
+      });
+      const user = await getUserProfile(userAgentApplication, config.scopes);
+      setProfileData({
+        displayName: user.displayName,
+        email: user.mail || user.userPrincipalName,
+      });
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.log(normalizeError(err));
+    }
+  }
 
   React.useEffect(() => {
     if (successfullyLoggedIn) {
@@ -55,6 +93,15 @@ export default function Login() {
       }, 1000);
     }
   }, [successfullyLoggedIn, history]);
+
+  React.useEffect(() => {
+    if (!_.isEmpty(userProfileData)) {
+      setUserProfileData(userProfileData);
+      setTimeout(() => {
+        history.push("/welcome");
+      }, 1000);
+    }
+  }, [userProfileData]);
 
   return (
     <div className="login-wrapper">
@@ -114,6 +161,16 @@ export default function Login() {
                   </p>
                 </div>
               </Form>
+              <Divider>or</Divider>
+              <Button
+                type="primary"
+                block
+                size="large"
+                icon={<WindowsOutlined />}
+                onClick={handleMicrosoftLogin}
+              >
+                Login With Microsoft
+              </Button>
             </div>
           </div>
         </div>

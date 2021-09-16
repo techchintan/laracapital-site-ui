@@ -1,5 +1,6 @@
 import MainLayout from "./layout/MainLayout";
 import AuthLayout from "./layout/AuthLayout";
+import WelcomeLayout from "./layout/WelcomeLayout";
 
 // import { withAuth } from "./hoc";
 import HomePage from "./pages/Home";
@@ -41,6 +42,11 @@ const routes = [
         key: "not-found",
       },
     ],
+  },
+  {
+    path: "/welcome",
+    component: WelcomeLayout,
+    key: "welcome-screen",
   },
   {
     path: "/",
