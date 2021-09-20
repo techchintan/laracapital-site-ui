@@ -20,6 +20,7 @@ export function normalizeError(error) {
 export async function getUserProfile(userAgentApplication, scopes) {
   var accessToken = await getAccessToken(userAgentApplication, scopes);
   if (accessToken) {
+    localStorage.setItem("laraCapitalAuthToken", accessToken);
     return await getUserDetails(accessToken);
   }
   return null;

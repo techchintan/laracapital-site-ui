@@ -96,9 +96,10 @@ export default function Login() {
 
   React.useEffect(() => {
     if (!_.isEmpty(userProfileData)) {
+      localStorage.setItem("isUserLogged", "true");
       setUserProfileData(userProfileData);
       setTimeout(() => {
-        history.push("/welcome");
+        history.push("/admin/dashboard");
       }, 1000);
     }
   }, [userProfileData]);

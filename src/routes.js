@@ -1,9 +1,12 @@
 import MainLayout from "./layout/MainLayout";
 import AuthLayout from "./layout/AuthLayout";
-import WelcomeLayout from "./layout/WelcomeLayout";
+import AdminLayout from "./layout/AdminLayout";
 
-// import { withAuth } from "./hoc";
+import { withAuth } from "./hoc";
 import HomePage from "./pages/Home";
+import Dashboard from "./pages/Admin/Dashboard";
+import Employees from "./pages/Admin/Employees";
+import Equipments from "./pages/Admin/Equipments";
 import ContactUs from "./pages/ContactUs";
 import AboutUs from "./pages/AboutUs";
 import Blog from "./pages/Blog";
@@ -20,10 +23,15 @@ import NotFoundPage from "./pages/NotFoundPage";
 
 const routes = [
   {
-    /* Enable withAuth once done with auth api */
     path: "/auth",
     component: AuthLayout,
     routes: [
+      {
+        path: "/auth",
+        exact: true,
+        component: Login,
+        key: "login-page",
+      },
       {
         path: "/auth/login",
         exact: true,
@@ -44,9 +52,39 @@ const routes = [
     ],
   },
   {
-    path: "/welcome",
-    component: WelcomeLayout,
-    key: "welcome-screen",
+    path: "/admin",
+    component: withAuth(AdminLayout),
+    routes: [
+      {
+        path: "/admin",
+        exact: true,
+        component: Dashboard,
+        key: "default-dashboard",
+      },
+      {
+        path: "/admin/dashboard",
+        exact: true,
+        component: Dashboard,
+        key: "dashboard",
+      },
+      {
+        path: "/admin/employees",
+        exact: true,
+        component: Employees,
+        key: "employees",
+      },
+      {
+        path: "/admin/equipments",
+        exact: true,
+        component: Equipments,
+        key: "equipments",
+      },
+      {
+        path: "*",
+        component: NotFoundPage,
+        key: "admin-not-found",
+      },
+    ],
   },
   {
     path: "/",
