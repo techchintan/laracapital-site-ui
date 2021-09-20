@@ -99,7 +99,7 @@ export default function Login() {
       localStorage.setItem("isUserLogged", "true");
       setUserProfileData(userProfileData);
       setTimeout(() => {
-        history.push("/admin/dashboard");
+        history.push("/admin/employees");
       }, 1000);
     }
   }, [userProfileData]);

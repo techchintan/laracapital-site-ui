@@ -4,7 +4,6 @@ import AdminLayout from "./layout/AdminLayout";
 
 import { withAuth } from "./hoc";
 import HomePage from "./pages/Home";
-import Dashboard from "./pages/Admin/Dashboard";
 import Employees from "./pages/Admin/Employees";
 import Equipments from "./pages/Admin/Equipments";
 import ContactUs from "./pages/ContactUs";
@@ -58,14 +57,8 @@ const routes = [
       {
         path: "/admin",
         exact: true,
-        component: Dashboard,
-        key: "default-dashboard",
-      },
-      {
-        path: "/admin/dashboard",
-        exact: true,
-        component: Dashboard,
-        key: "dashboard",
+        component: Employees,
+        key: "default-employees",
       },
       {
         path: "/admin/employees",

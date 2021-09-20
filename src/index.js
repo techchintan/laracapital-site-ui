@@ -8,11 +8,8 @@ import ReactDOM from "react-dom";
 import { RecoilRoot } from "recoil";
 import { QueryClient, QueryClientProvider } from "react-query";
 
-import { icons } from "./assets/icons";
 import ToastBanner from "./components/ToastBanner";
 import App from "./pages/App";
-
-React.icons = icons;
 
 const queryClient = new QueryClient();
 

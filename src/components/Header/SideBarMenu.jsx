@@ -20,7 +20,7 @@ export default function SideBarMenu() {
   const [sideMenuBar, setSideMenuBar] = useRecoilState(sideMenuBarAtom);
   return (
     <CSidebar show={sideMenuBar} onShowChange={(val) => setSideMenuBar(val)}>
-      <CSidebarBrand className="d-md-down-none" to="/dashboard">
+      <CSidebarBrand className="d-md-down-none" to="/admin/employees">
         <img src={BrandLogo} alt="BrandLogo" height={35} />
       </CSidebarBrand>
       <CSidebarNav>

@@ -23,7 +23,6 @@ import {
 } from "@ant-design/icons";
 
 import { requestUserRegister } from "../../services/auth";
-import BrandLogo from "../../assets/images/company-logo.svg";
 
 import "./style.scss";
 
@@ -127,173 +126,162 @@ export default function Register() {
 
   return (
     <div className="login-wrapper">
-      <div className="row no-gutters">
-        <div className="col-md-6">
-          <div className="left_side">
-            <h1 className="banner_head">
-              Lara is your wealth asset <br /> Management company.
-            </h1>
+      <div className="row">
+        <div className="col-md-2"></div>
+        <div className="col-md-8">
+          <div className="registration-text">
+            <h1 className="login-title">Registration</h1>
+            <Form layout="vertical" onFinish={onFinish}>
+              <Form.Item
+                label="Employee ID"
+                name="employeeId"
+                rules={validationRules.employeeId}
+              >
+                <Input
+                  placeholder="Employee ID"
+                  prefix={<IdcardOutlined />}
+                  size="large"
+                />
+              </Form.Item>
+              <Row gutter={6}>
+                <Col md={12}>
+                  <Form.Item
+                    label="First Name"
+                    name="firstName"
+                    rules={validationRules.firstName}
+                  >
+                    <Input
+                      placeholder="First Name"
+                      prefix={<UserOutlined />}
+                      size="large"
+                    />
+                  </Form.Item>
+                </Col>
+                <Col md={12}>
+                  <Form.Item
+                    label="Last Name"
+                    name="lastName"
+                    rules={validationRules.lastName}
+                  >
+                    <Input
+                      placeholder="Last Name"
+                      prefix={<UserOutlined />}
+                      size="large"
+                    />
+                  </Form.Item>
+                </Col>
+              </Row>
+              <Form.Item
+                label="Email Address"
+                name="emailAddress"
+                rules={validationRules.emailAddress}
+              >
+                <Input
+                  placeholder="Email Address"
+                  prefix={<MailOutlined />}
+                  size="large"
+                />
+              </Form.Item>
+              <Form.Item
+                label="Date of birth"
+                name="dateOfBirth"
+                rules={validationRules.dateOfBirth}
+              >
+                <DatePicker size="large" placeholder="Select Date of birth" />
+              </Form.Item>
+              <Row gutter={6}>
+                <Col md={12}>
+                  <Form.Item label="Country" name="country" required>
+                    <Select
+                      style={{ width: "100%" }}
+                      placeholder="Select Country"
+                      value={selectedCounty}
+                      onChange={handleCountryChange}
+                    >
+                      {countryList.map((country, key) => (
+                        <Option key={key} value={country.name}>
+                          {country.name}
+                        </Option>
+                      ))}
+                    </Select>
+                  </Form.Item>
+                </Col>
+                <Col md={12}>
+                  <Form.Item label="State" name="state" required>
+                    <Select
+                      style={{ width: "100%" }}
+                      placeholder="Select State"
+                      value={selectedCity}
+                      onChange={handleStateChange}
+                    >
+                      {cities.map((city, key) => (
+                        <Option key={key} value={city}>
+                          {city}
+                        </Option>
+                      ))}
+                    </Select>
+                  </Form.Item>
+                </Col>
+              </Row>
+              <Form.Item
+                label="Username"
+                name="username"
+                rules={validationRules.username}
+              >
+                <Input
+                  placeholder="Username"
+                  prefix={<UserOutlined />}
+                  size="large"
+                />
+              </Form.Item>
+              <Row gutter={6}>
+                <Col md={12}>
+                  <Form.Item
+                    label="Password"
+                    name="password"
+                    rules={validationRules.password}
+                  >
+                    <Input.Password
+                      placeholder="Password"
+                      iconRender={(visible) =>
+                        visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+                      }
+                      prefix={<UnlockOutlined />}
+                      size="large"
+                    />
+                  </Form.Item>
+                </Col>
+                <Col md={12}>
+                  <Form.Item
+                    label="Confirm Password"
+                    name="confirmPassword"
+                    rules={validationRules.confirmPassword}
+                  >
+                    <Input.Password
+                      placeholder="Confirm password"
+                      iconRender={(visible) =>
+                        visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+                      }
+                      prefix={<LockOutlined />}
+                      size="large"
+                    />
+                  </Form.Item>
+                </Col>
+              </Row>
+              <Form.Item>
+                <Button type="primary" block size="large" htmlType="submit">
+                  {fetchingRegistration ? "Loading" : "Register"}
+                </Button>
+              </Form.Item>
+              <div className="login-register-link">
+                <p className="text-center">
+                  Already have an account? <Link to="/auth/login">Log in</Link>
+                </p>
+              </div>
+            </Form>
           </div>
         </div>
-        <div className="col-md-6">
-          <div className="right_side">
-            <div className="text-center">
-              <img src={BrandLogo} alt="client-logo" className="client-logo" />
-            </div>
-            <div className="login-text">
-              <h1 className="login-title">Registration</h1>
-              <Form layout="vertical" onFinish={onFinish}>
-                <Form.Item
-                  label="Employee ID"
-                  name="employeeId"
-                  rules={validationRules.employeeId}
-                >
-                  <Input
-                    placeholder="Employee ID"
-                    prefix={<IdcardOutlined />}
-                    size="large"
-                  />
-                </Form.Item>
-                <Row gutter={6}>
-                  <Col md={12}>
-                    <Form.Item
-                      label="First Name"
-                      name="firstName"
-                      rules={validationRules.firstName}
-                    >
-                      <Input
-                        placeholder="First Name"
-                        prefix={<UserOutlined />}
-                        size="large"
-                      />
-                    </Form.Item>
-                  </Col>
-                  <Col md={12}>
-                    <Form.Item
-                      label="Last Name"
-                      name="lastName"
-                      rules={validationRules.lastName}
-                    >
-                      <Input
-                        placeholder="Last Name"
-                        prefix={<UserOutlined />}
-                        size="large"
-                      />
-                    </Form.Item>
-                  </Col>
-                </Row>
-                <Form.Item
-                  label="Email Address"
-                  name="emailAddress"
-                  rules={validationRules.emailAddress}
-                >
-                  <Input
-                    placeholder="Email Address"
-                    prefix={<MailOutlined />}
-                    size="large"
-                  />
-                </Form.Item>
-                <Form.Item
-                  label="Date of birth"
-                  name="dateOfBirth"
-                  rules={validationRules.dateOfBirth}
-                >
-                  <DatePicker size="large" placeholder="Select Date of birth" />
-                </Form.Item>
-                <Row gutter={6}>
-                  <Col md={12}>
-                    <Form.Item label="Country" name="country" required>
-                      <Select
-                        style={{ width: "100%" }}
-                        placeholder="Select Country"
-                        value={selectedCounty}
-                        onChange={handleCountryChange}
-                      >
-                        {countryList.map((country, key) => (
-                          <Option key={key} value={country.name}>
-                            {country.name}
-                          </Option>
-                        ))}
-                      </Select>
-                    </Form.Item>
-                  </Col>
-                  <Col md={12}>
-                    <Form.Item label="State" name="state" required>
-                      <Select
-                        style={{ width: "100%" }}
-                        placeholder="Select State"
-                        value={selectedCity}
-                        onChange={handleStateChange}
-                      >
-                        {cities.map((city, key) => (
-                          <Option key={key} value={city}>
-                            {city}
-                          </Option>
-                        ))}
-                      </Select>
-                    </Form.Item>
-                  </Col>
-                </Row>
-                <Form.Item
-                  label="Username"
-                  name="username"
-                  rules={validationRules.username}
-                >
-                  <Input
-                    placeholder="Username"
-                    prefix={<UserOutlined />}
-                    size="large"
-                  />
-                </Form.Item>
-                <Row gutter={6}>
-                  <Col md={12}>
-                    <Form.Item
-                      label="Password"
-                      name="password"
-                      rules={validationRules.password}
-                    >
-                      <Input.Password
-                        placeholder="Password"
-                        iconRender={(visible) =>
-                          visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-                        }
-                        prefix={<UnlockOutlined />}
-                        size="large"
-                      />
-                    </Form.Item>
-                  </Col>
-                  <Col md={12}>
-                    <Form.Item
-                      label="Confirm Password"
-                      name="confirmPassword"
-                      rules={validationRules.confirmPassword}
-                    >
-                      <Input.Password
-                        placeholder="Confirm password"
-                        iconRender={(visible) =>
-                          visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-                        }
-                        prefix={<LockOutlined />}
-                        size="large"
-                      />
-                    </Form.Item>
-                  </Col>
-                </Row>
-                <Form.Item>
-                  <Button type="primary" block size="large" htmlType="submit">
-                    {fetchingRegistration ? "Loading" : "Register"}
-                  </Button>
-                </Form.Item>
-                <div className="login-register-link">
-                  <p className="text-center">
-                    Already have an account?{" "}
-                    <Link to="/auth/login">Log in</Link>
-                  </p>
-                </div>
-              </Form>
-            </div>
-          </div>
-        </div>
+        <div className="col-md-2"></div>
       </div>
     </div>
   );

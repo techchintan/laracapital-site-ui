@@ -1,5 +1,5 @@
 import React from "react";
-import CIcon from "@coreui/icons-react";
+import { UserOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 
 /* Initial Parameter of Axios Request */
 export const axiosInitialParams = {
@@ -19,20 +19,14 @@ export const axiosInitialParams = {
 export const normalUserNavigation = [
   {
     _tag: "CSidebarNavItem",
-    name: "Dashboard",
-    to: "/admin/dashboard",
-    icon: <CIcon name="cil-home" customClasses="c-sidebar-nav-icon" />,
-  },
-  {
-    _tag: "CSidebarNavItem",
     name: "Employees",
     to: "/admin/employees",
-    icon: <CIcon name="cil-people" customClasses="c-sidebar-nav-icon" />,
+    icon: <UserOutlined style={{ marginRight: 12 }} />,
   },
   {
     _tag: "CSidebarNavItem",
     name: "Equipments",
     to: "/admin/equipments",
-    icon: <CIcon name="cil-puzzle" customClasses="c-sidebar-nav-icon" />,
+    icon: <ShoppingCartOutlined style={{ marginRight: 12 }} />,
   },
 ];

@@ -7,7 +7,7 @@ import {
   CDropdownToggle,
   CImg,
 } from "@coreui/react";
-import CIcon from "@coreui/icons-react";
+import { LogoutOutlined } from "@ant-design/icons";
 
 export default function HeaderDropdown() {
   const history = useHistory();
@@ -31,7 +31,7 @@ export default function HeaderDropdown() {
         </CDropdownToggle>
         <CDropdownMenu className="pt-0" placement="bottom-end">
           <CDropdownItem onClick={handleLogout}>
-            <CIcon name="cil-account-logout" className="mfe-2" />
+            <LogoutOutlined style={{ marginRight: 12 }}/>
             Logout
           </CDropdownItem>
         </CDropdownMenu>
