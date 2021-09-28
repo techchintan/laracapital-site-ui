@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import BrandLogo from "../../assets/images/company-logo.svg";
 import "./style.scss";
 
+//common footer component for guest user
 export default function CommonFooter() {
   return (
     <>

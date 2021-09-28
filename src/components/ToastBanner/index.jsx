@@ -3,6 +3,7 @@ import { ToastContainer } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
 
+/* Common Alert Message component */
 export default function ToastBanner() {
   return (
     <ToastContainer

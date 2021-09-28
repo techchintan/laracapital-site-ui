@@ -8,6 +8,7 @@ import "./style.scss";
 import useWindowSize from "../../hooks/useWindowSize";
 import BrandLogo from "../../assets/images/company-logo.svg";
 
+// Navigation bar(Header) for guest user
 export default function Navigation() {
   const history = useHistory();
   const { width: windowWidth } = useWindowSize();

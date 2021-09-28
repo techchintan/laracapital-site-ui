@@ -1,3 +1,4 @@
+/* Font Family: HelveticaNeue Regular*/
 @font-face {
   font-family: "HelveticaNeue Regular";
   font-style: normal;
@@ -6,6 +7,7 @@
     url("../fonts/HelveticaNeue-Regular.woff") format("woff");
 }
 
+/* Font Family: HelveticaNeue Medium*/
 @font-face {
   font-family: "HelveticaNeue Medium";
   font-style: normal;
@@ -14,6 +16,7 @@
     url("../fonts/HelveticaNeue-Medium.woff") format("woff");
 }
 
+/* Font Family: HelveticaNeue Bold*/
 @font-face {
   font-family: "HelveticaNeue Bold";
   font-style: normal;

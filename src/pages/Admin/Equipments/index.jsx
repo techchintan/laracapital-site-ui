@@ -12,6 +12,7 @@ import equipmentsData from "./EquipmentsData";
 
 export default function Equipments() {
   const tableFields = ["equipmentName", "equipmentType", "serialNumber"];
+
   return (
     <CRow>
       <CCol xs="12" sm="12">

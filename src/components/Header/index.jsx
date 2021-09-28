@@ -11,6 +11,7 @@ import {
 import { sideMenuBarAtom } from "../../recoils/header";
 import HeaderDropdown from "./HeaderDropdown";
 
+// Dashboard Header component
 export default function Header() {
   const [sideMenuBar, setSideMenuBar] = useRecoilState(sideMenuBarAtom);
 

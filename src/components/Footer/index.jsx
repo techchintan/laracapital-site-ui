@@ -1,6 +1,7 @@
 import React from "react";
 import { CFooter } from "@coreui/react";
 
+//common footer component for dashbaord
 export default function Footer() {
   return (
     <CFooter fixed={false}>

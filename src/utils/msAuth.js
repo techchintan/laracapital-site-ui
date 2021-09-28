@@ -1,3 +1,4 @@
+/* Microsoft SSO login utils file */
 import { getUserDetails } from "../services/microsoftAuth/GraphService";
 
 export function normalizeError(error) {

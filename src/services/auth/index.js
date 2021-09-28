@@ -2,12 +2,13 @@ import Axios from "axios";
 import { message as antdMessage } from "antd";
 import { axiosInitialParams } from "../../utils";
 
-const baseAPIUrl = process.env.REACT_APP_API_SERVER;
+const baseAPIUrl = process.env.REACT_APP_API_SERVER; //base API endpoint url from .env
 const axios = Axios.create({
   baseURL: `${baseAPIUrl}/employee`,
   axiosInitialParams,
 });
 
+// Used for user login
 export const requestUserLogin = async (params) => {
   try {
     const { data, status, message } = await axios.post("/login", params);
@@ -29,6 +30,7 @@ export const requestUserLogin = async (params) => {
   }
 };
 
+// Used for user Register
 export const requestUserRegister = async (params) => {
   try {
     const { data, status } = await axios

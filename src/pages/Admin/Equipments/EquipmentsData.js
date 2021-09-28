@@ -1,4 +1,5 @@
-const usersData = [
+/* Employees Data: TODO: bind Equipments API for data */
+const equipmentsData = [
   {
     id: 0,
     equipmentName: "Dummy Dell Laptop",
@@ -13,4 +14,4 @@ const usersData = [
   },
 ];
 
-export default usersData;
+export default equipmentsData;

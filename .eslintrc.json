@@ -1,3 +1,4 @@
+/* Code standard linting file: ESLint */
 {
   "env": {
     "browser": true,

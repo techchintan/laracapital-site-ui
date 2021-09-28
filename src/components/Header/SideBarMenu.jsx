@@ -16,8 +16,10 @@ import BrandLogo from "../../assets/images/company-logo.svg";
 import { sideMenuBarAtom } from "../../recoils/header";
 import { normalUserNavigation } from "../../utils";
 
+// Side menu bar for Mobile screen
 export default function SideBarMenu() {
   const [sideMenuBar, setSideMenuBar] = useRecoilState(sideMenuBarAtom);
+
   return (
     <CSidebar show={sideMenuBar} onShowChange={(val) => setSideMenuBar(val)}>
       <CSidebarBrand className="d-md-down-none" to="/admin/employees">

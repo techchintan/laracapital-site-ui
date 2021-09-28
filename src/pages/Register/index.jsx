@@ -28,6 +28,7 @@ import "./style.scss";
 
 const { Option } = Select;
 
+// List of validation rules used for filed validation
 const validationRules = {
   employeeId: [{ required: true, message: "Please enter your Employee Id" }],
   firstName: [{ required: true, message: "Please enter your First Name" }],
@@ -64,12 +65,14 @@ const validationRules = {
   ],
 };
 
+// List of Country TODO: bind country API
 const countries = {
   India: ["Mumbai", "Pune", "Banglore", "Surat"],
   USA: ["New York", "San Francisco", "Austin", "Dallas"],
   Brazil: ["São Paulo", "Rio de Janeiro", "Salvador"],
 };
 
+//Page: Auth-Register
 export default function Register() {
   const history = useHistory();
   const [cities, setCities] = React.useState([]);
@@ -81,6 +84,7 @@ export default function Register() {
     isSuccess: successfullyRegistered,
   } = useMutation((data) => requestUserRegister(data));
 
+  //used for populate country-city dropdown
   const countryList = Object.keys(countries).map((key) => ({
     name: key,
   }));
@@ -92,10 +96,7 @@ export default function Register() {
     setSelectedCity("");
   }
 
-  function handleStateChange(value) {
-    setSelectedCity(value);
-  }
-
+  // form submit event for Login API call
   const onFinish = (values) => {
     const body = {
       firstName: values.firstName,
@@ -212,7 +213,7 @@ export default function Register() {
                       style={{ width: "100%" }}
                       placeholder="Select State"
                       value={selectedCity}
-                      onChange={handleStateChange}
+                      onChange={(value) => setSelectedCity(value)}
                     >
                       {cities.map((city, key) => (
                         <Option key={key} value={city}>

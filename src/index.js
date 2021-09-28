@@ -5,10 +5,10 @@ import "antd/dist/antd.css";
 
 import React from "react";
 import ReactDOM from "react-dom";
-import { RecoilRoot } from "recoil";
-import { QueryClient, QueryClientProvider } from "react-query";
+import { RecoilRoot } from "recoil"; // State managment
+import { QueryClient, QueryClientProvider } from "react-query"; // API integration
 
-import ToastBanner from "./components/ToastBanner";
+import ToastBanner from "./components/ToastBanner"; // Alert message
 import App from "./pages/App";
 
 const queryClient = new QueryClient();
@@ -18,6 +18,7 @@ function BaseApp() {
     <RecoilRoot>
       <QueryClientProvider client={queryClient}>
         <ToastBanner />
+        {/* Root of React project: APP start from here */}
         <App />
       </QueryClientProvider>
     </RecoilRoot>

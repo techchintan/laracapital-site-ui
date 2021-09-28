@@ -6,8 +6,10 @@ import "./style.scss";
 
 const { Title } = Typography;
 
+//Page: Home Page for Guest user
 export default function Home() {
   const history = useHistory();
+
   return (
     <div className="home-layout">
       <div className="hero-image">

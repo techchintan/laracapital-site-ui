@@ -12,6 +12,7 @@ import employeesData from "./EmployeesData";
 
 export default function Employees() {
   const tableFields = ["locationName", "country", "state", "city"];
+
   return (
     <CRow>
       <CCol xs="12" lg="12" sm="12">

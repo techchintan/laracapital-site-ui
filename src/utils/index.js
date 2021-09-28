@@ -1,7 +1,7 @@
 import React from "react";
 import { UserOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 
-/* Initial Parameter of Axios Request */
+/* Initial Parameter of Axios API Request */
 export const axiosInitialParams = {
   cache: "no-cache",
   credentials: "same-origin",
@@ -15,7 +15,7 @@ export const axiosInitialParams = {
   withCredentials: true,
 };
 
-/* Topbar: Normal user Inner Navigation */
+/* Topbar: Dashboard Inner Navigation */
 export const normalUserNavigation = [
   {
     _tag: "CSidebarNavItem",

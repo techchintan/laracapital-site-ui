@@ -1,18 +1,19 @@
-import { useState, useEffect, useCallback } from "react";
+import React from "react";
 
+//returns size of screen, used for mobile responsive
 export default function useWindowSize() {
   const isClient = typeof window === "object";
 
-  const getSize = useCallback(() => {
+  const getSize = React.useCallback(() => {
     return {
       width: isClient ? window.innerWidth : undefined,
       height: isClient ? window.innerHeight : undefined,
     };
   }, [isClient]);
 
-  const [windowSize, setWindowSize] = useState(getSize);
+  const [windowSize, setWindowSize] = React.useState(getSize);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!isClient) {
       return false;
     }
