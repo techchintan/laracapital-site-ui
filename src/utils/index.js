@@ -29,4 +29,31 @@ export const normalUserNavigation = [
     to: "/admin/equipments",
     icon: <ShoppingCartOutlined style={{ marginRight: 12 }} />,
   },
+  {
+    _tag: "CSidebarNavItem",
+    name: "Location",
+    to: "/admin/location",
+    icon: <ShoppingCartOutlined style={{ marginRight: 12 }} />,
+  },
 ];
+
+/* Global Errors state utils */
+export const getErrorMessage = (errors, fieldName, fieldLabel) => {
+  if (errors[fieldName]) {
+    const { type } = errors[fieldName];
+    switch (type) {
+      case "required":
+        return `${fieldLabel} is required`;
+      case "sameAs":
+        return "Passwords do not match. Please try again.";
+      case "pattern":
+        return `Invalid ${fieldLabel}`;
+      default:
+        // eslint-disable-next-line no-console
+        console.error(`Unknow error type: ${type}`);
+        return type;
+    }
+  } else {
+    return false;
+  }
+};

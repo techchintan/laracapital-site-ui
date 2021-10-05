@@ -12,6 +12,8 @@ import Login from "./pages/Login";
 import Employees from "./pages/Admin/Employees";
 import Equipments from "./pages/Admin/Equipments";
 import NotFoundPage from "./pages/NotFoundPage";
+import Location from "./pages/Admin/Location";
+import AddEquipments from "./pages/Admin/Equipments/AddEquipments";
 
 /**
  * @routes {array} of routes
@@ -72,6 +74,18 @@ const routes = [
         exact: true,
         component: Equipments,
         key: "equipments",
+      },
+      {
+        path: "/admin/addEquipment",
+        exact: true,
+        component: AddEquipments,
+        key: "add-equipments",
+      },
+      {
+        path: "/admin/location",
+        exact: true,
+        component: Location,
+        key: "location",
       },
       {
         path: "*",

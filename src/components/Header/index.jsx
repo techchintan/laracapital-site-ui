@@ -19,6 +19,8 @@ export default function Header() {
     { path: "/admin", exact: true, name: "Home" },
     { path: "/admin/employees", exact: true, name: "Employees" },
     { path: "/admin/equipments", exact: true, name: "Equipments" },
+    { path: "/admin/addequipment", exact: true, name: "Add Equipment" },
+    { path: "/admin/location", exact: true, name: "Location" },
   ];
 
   return (

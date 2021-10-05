@@ -1,4 +1,4 @@
-/* Employees Data: TODO: bind Equipments API for data */
+/* Equipments Data: TODO: bind Equipments API for data */
 const equipmentsData = [
   {
     id: 0,
