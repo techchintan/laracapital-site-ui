@@ -1,6 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 import { useForm } from "react-hook-form";
+import { useMutation } from "react-query";
 import {
   CCard,
   CCardBody,
@@ -17,8 +18,10 @@ import {
 } from "@coreui/react";
 
 import { getErrorMessage } from "../../../../utils";
+import { addNewEquipment } from "../../../../services/equipments";
 
 export default function AddEquipments() {
+  const authToken = localStorage.getItem("laraCapitalAuthToken");
   const {
     register,
     handleSubmit,
@@ -26,15 +29,25 @@ export default function AddEquipments() {
     getValues,
     formState: { errors },
   } = useForm();
+  const {
+    mutate: addNewEquipmentMutation,
+    isLoading: isAddingEquipment,
+    isSuccess: isAddedSuccessfully,
+    data: addedEquipmentData,
+  } = useMutation((data) => addNewEquipment(data));
 
   const onSubmit = (data) => {
-    const query = {
-      data: { id: data.deviceName, owner: userId },
-      token: token,
-    };
     // eslint-disable-next-line no-console
-    console.log(query);
+    console.log(data, "data"); //This is whole data of form, pass those data which you need pass to Backend, for now i added whole data i,e {data:data}
+    const query = {
+      data: data,
+      token: authToken, //This is our authToken which is used for api authentication, remove if you dont need
+    };
+    addNewEquipmentMutation(query);
   };
+
+  // eslint-disable-next-line no-console
+  console.log(addedEquipmentData, "addedEquipmentData", isAddedSuccessfully);
 
   return (
     <CRow>
@@ -73,7 +86,13 @@ export default function AddEquipments() {
                 <CCol className="col-3">Type</CCol>
                 <CCol className="col-6">
                   <CInputGroup>
-                    <CSelect aria-label="Default select example">
+                    <CSelect
+                      name="equipmentType"
+                      aria-label="Default select example"
+                      onChange={(e) =>
+                        setValue("equipmentType", e.target.value)
+                      }
+                    >
                       <option>Select Type</option>
                       <option value="1">One</option>
                       <option value="2">Two</option>
@@ -89,7 +108,13 @@ export default function AddEquipments() {
                 <CCol className="col-3">Sub type</CCol>
                 <CCol className="col-6">
                   <CInputGroup>
-                    <CSelect aria-label="Default select example">
+                    <CSelect
+                      name="equipmentSubType"
+                      aria-label="Default select example"
+                      onChange={(e) =>
+                        setValue("equipmentSubType", e.target.value)
+                      }
+                    >
                       <option>Select Sub type</option>
                       <option value="1">One</option>
                       <option value="2">Two</option>
@@ -129,7 +154,11 @@ export default function AddEquipments() {
                 <CCol className="col-3">States</CCol>
                 <CCol className="col-6">
                   <CInputGroup>
-                    <CSelect aria-label="Default select example">
+                    <CSelect
+                      aria-label="Default select example"
+                      name="state"
+                      onChange={(e) => setValue("state", e.target.value)}
+                    >
                       <option>Select State</option>
                       <option value="1">One</option>
                       <option value="2">Two</option>
@@ -168,7 +197,7 @@ export default function AddEquipments() {
             </CCardBody>
             <CCardFooter>
               <CButton type="submit" color="primary">
-                Submit
+                {isAddingEquipment ? "Loading" : "Add"}
               </CButton>
             </CCardFooter>
           </CForm>

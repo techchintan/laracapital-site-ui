@@ -3,7 +3,7 @@ import { atom } from "recoil";
 /*
  * @Author: Chintan Sudani
  * @Description: This file includes state
- * management recoil of device page services.
+ * management recoil of header services.
  */
 
 // returns boolean value: if sidemenu is open or not
