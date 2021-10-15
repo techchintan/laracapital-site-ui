@@ -2,7 +2,7 @@ import MainLayout from "./layout/MainLayout"; //Guest components render from Aut
 import AuthLayout from "./layout/AuthLayout"; //auth components render from AuthLayout, i,e Login
 import AdminLayout from "./layout/AdminLayout"; //Authenticated components render from AuthLayout, i,e Dashboard
 
-import { withAuth } from "./hoc";
+import { withAuth, withRole } from "./hoc";
 
 import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
@@ -91,6 +91,29 @@ const routes = [
         path: "*",
         component: NotFoundPage,
         key: "admin-not-found",
+      },
+    ],
+  },
+  {
+    path: "/admin",
+    component: withRole(AdminLayout, "admin"),
+    routes: [
+      {
+        path: "/admin",
+        exact: true,
+        component: Employees,
+        key: "admin-home",
+      },
+      {
+        path: "/admin/employees",
+        exact: true,
+        component: Employees,
+        key: "employees",
+      },
+      {
+        path: "*",
+        component: NotFoundPage,
+        key: "not-found",
       },
     ],
   },

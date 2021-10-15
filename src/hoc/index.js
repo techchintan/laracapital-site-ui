@@ -1,3 +1,4 @@
 import withAuth from "./withAuth";
+import withRole from "./withRole";
 
-export { withAuth };
+export { withAuth, withRole };

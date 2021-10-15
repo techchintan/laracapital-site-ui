@@ -31,7 +31,7 @@ export default function HeaderDropdown() {
         </CDropdownToggle>
         <CDropdownMenu className="pt-0" placement="bottom-end">
           <CDropdownItem onClick={handleLogout}>
-            <LogoutOutlined style={{ marginRight: 12 }}/>
+            <LogoutOutlined style={{ marginRight: 12 }} />
             Logout
           </CDropdownItem>
         </CDropdownMenu>

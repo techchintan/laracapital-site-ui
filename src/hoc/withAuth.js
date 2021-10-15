@@ -8,7 +8,7 @@ import { useHistory } from "react-router-dom";
  */
 
 // used for if user is logged or not for private routing
-export default function withAuth(WrapperComponent) {
+export default function WithAuth(WrapperComponent) {
   function Authenticate(props) {
     const history = useHistory();
     const isAuthenticated = localStorage.getItem("isUserLogged");
