@@ -100,7 +100,13 @@ export default function Login() {
       localStorage.setItem("isUserLogged", "true");
       setUserProfileData(userProfileData);
       setTimeout(() => {
-        history.push("/admin/employees");
+        /* Here we take "sonika.sa96@gmail.com" this user as admin user rest are normal user */
+        if (userProfileData?.email === "sonika.sa96@gmail.com") {
+          localStorage.setItem("isAdminUser", "admin");
+          history.push("/admin/employees");
+        } else {
+          history.push("/employee/equipment");
+        }
       }, 1000);
     }
   }, [userProfileData]);

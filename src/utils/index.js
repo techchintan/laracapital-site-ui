@@ -16,7 +16,7 @@ export const axiosInitialParams = {
 };
 
 /* Topbar: Dashboard Inner Navigation */
-export const normalUserNavigation = [
+export const adminUserNavigation = [
   {
     _tag: "CSidebarNavItem",
     name: "Employees",
@@ -33,6 +33,16 @@ export const normalUserNavigation = [
     _tag: "CSidebarNavItem",
     name: "Location",
     to: "/admin/location",
+    icon: <ShoppingCartOutlined style={{ marginRight: 12 }} />,
+  },
+];
+
+/* Topbar: Dashboard Inner Navigation */
+export const normalUserNavigation = [
+  {
+    _tag: "CSidebarNavItem",
+    name: "Equipments",
+    to: "/employee/equipment",
     icon: <ShoppingCartOutlined style={{ marginRight: 12 }} />,
   },
 ];

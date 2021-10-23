@@ -1,6 +1,7 @@
 import MainLayout from "./layout/MainLayout"; //Guest components render from AuthLayout, i,e Home
 import AuthLayout from "./layout/AuthLayout"; //auth components render from AuthLayout, i,e Login
 import AdminLayout from "./layout/AdminLayout"; //Authenticated components render from AuthLayout, i,e Dashboard
+import EmployeeLayout from "./layout/EmployeeLayout"; // Employee Dashnbord
 
 import { withAuth, withRole } from "./hoc";
 
@@ -9,11 +10,12 @@ import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-import Employees from "./pages/Admin/Employees";
-import Equipments from "./pages/Admin/Equipments";
+import Employees from "./pages/AdminDashboard/Employees";
+import Equipments from "./pages/AdminDashboard/Equipments";
+import Location from "./pages/AdminDashboard/Location";
+import AddEquipments from "./pages/AdminDashboard/Equipments/AddEquipments";
+import EmployeeEquipments from "./pages/EmployeeDashboard/Equipments";
 import NotFoundPage from "./pages/NotFoundPage";
-import Location from "./pages/Admin/Location";
-import AddEquipments from "./pages/Admin/Equipments/AddEquipments";
 
 /**
  * @routes {array} of routes
@@ -55,7 +57,7 @@ const routes = [
   },
   {
     path: "/admin",
-    component: withAuth(AdminLayout),
+    component: withAuth(withRole(AdminLayout, "admin")),
     routes: [
       {
         path: "/admin",
@@ -95,25 +97,19 @@ const routes = [
     ],
   },
   {
-    path: "/admin",
-    component: withRole(AdminLayout, "admin"),
+    path: "/employee",
+    component: withAuth(EmployeeLayout),
     routes: [
       {
-        path: "/admin",
+        path: "/employee/equipment",
         exact: true,
-        component: Employees,
-        key: "admin-home",
-      },
-      {
-        path: "/admin/employees",
-        exact: true,
-        component: Employees,
-        key: "employees",
+        component: EmployeeEquipments,
+        key: "employees-equipment",
       },
       {
         path: "*",
         component: NotFoundPage,
-        key: "not-found",
+        key: "admin-not-found",
       },
     ],
   },

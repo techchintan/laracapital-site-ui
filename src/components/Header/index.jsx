@@ -1,5 +1,6 @@
 import React from "react";
 import { useRecoilState } from "recoil";
+import { useHistory } from "react-router";
 import {
   CHeader,
   CToggler,
@@ -13,14 +14,20 @@ import HeaderDropdown from "./HeaderDropdown";
 
 // Dashboard Header component
 export default function Header() {
+  const history = useHistory();
   const [sideMenuBar, setSideMenuBar] = useRecoilState(sideMenuBarAtom);
 
-  const breadCrumbRoutes = [
+  const adminBreadCrumbRoutes = [
     { path: "/admin", exact: true, name: "Home" },
     { path: "/admin/employees", exact: true, name: "Employees" },
     { path: "/admin/equipments", exact: true, name: "Equipments" },
     { path: "/admin/addequipment", exact: true, name: "Add Equipment" },
     { path: "/admin/location", exact: true, name: "Location" },
+  ];
+
+  const employeeBreadCrumbRoutes = [
+    { path: "/employee", exact: true, name: "Home" },
+    { path: "/employee/equipments", exact: true, name: "Equipments" },
   ];
 
   return (
@@ -42,7 +49,11 @@ export default function Header() {
       <CSubheader className="px-3 justify-content-between">
         <CBreadcrumbRouter
           className="border-0 c-subheader-nav m-0 px-0 px-md-3"
-          routes={breadCrumbRoutes}
+          routes={
+            history.location.pathname === "/employee/equipment"
+              ? employeeBreadCrumbRoutes
+              : adminBreadCrumbRoutes
+          }
         />
       </CSubheader>
     </CHeader>

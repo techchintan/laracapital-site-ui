@@ -1,5 +1,6 @@
 import React from "react";
 import { useRecoilState } from "recoil";
+import { useHistory } from "react-router";
 import {
   CCreateElement,
   CSidebar,
@@ -14,10 +15,11 @@ import {
 import BrandLogo from "../../assets/images/company-logo.svg";
 
 import { sideMenuBarAtom } from "../../recoils/header";
-import { normalUserNavigation } from "../../utils";
+import { adminUserNavigation, normalUserNavigation } from "../../utils";
 
 // Side menu bar for Mobile screen
 export default function SideBarMenu() {
+  const history = useHistory();
   const [sideMenuBar, setSideMenuBar] = useRecoilState(sideMenuBarAtom);
 
   return (
@@ -27,7 +29,11 @@ export default function SideBarMenu() {
       </CSidebarBrand>
       <CSidebarNav>
         <CCreateElement
-          items={normalUserNavigation}
+          items={
+            history.location.pathname === "/employee/equipment"
+              ? normalUserNavigation
+              : adminUserNavigation
+          }
           components={{
             CSidebarNavDivider,
             CSidebarNavDropdown,

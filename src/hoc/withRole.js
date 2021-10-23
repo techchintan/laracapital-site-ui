@@ -12,11 +12,13 @@ export default function WithRole(WrapperComponent, userRole) {
   function Authorization(props) {
     const history = useHistory();
     const isAuthenticated = localStorage.getItem("isUserLogged");
-    const roles = ["admin"]; /* TODO: We need roles array at when user login */
+    const adminRole = localStorage.getItem("isAdminUser");
+    /* TODO: We need roles array at when user login */
+    const roles = [adminRole];
 
     const handleRedirect = React.useCallback(() => {
       if (!isAuthenticated || !roles?.some((item) => item === userRole)) {
-        history.push("/");
+        history.push("/employee/equipment");
       }
     }, [history, isAuthenticated, roles]);
 
