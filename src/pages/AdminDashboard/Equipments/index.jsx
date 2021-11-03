@@ -42,6 +42,19 @@ export default function Equipments() {
               clickableRows
               items={equipmentsData}
               fields={tableFields}
+              scopedSlots={{
+                equipmentName: (item, index) => {
+                  return (
+                    <td key={index} className="py-2">
+                      <div
+                        onClick={() => history.push(`/admin/equipment/${item.id}`)}
+                      >
+                        {item.equipmentName}
+                      </div>
+                    </td>
+                  );
+                },
+              }}
             />
           </CCardBody>
         </CCard>

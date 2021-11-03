@@ -11,6 +11,7 @@ import ContactUs from "./pages/ContactUs";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Employees from "./pages/AdminDashboard/Employees";
+import EquipmentDetailsView from "./pages/AdminDashboard/Equipments/EquipmentDetailsView";
 import Equipments from "./pages/AdminDashboard/Equipments";
 import Location from "./pages/AdminDashboard/Location";
 import AddEquipments from "./pages/AdminDashboard/Equipments/AddEquipments";
@@ -82,6 +83,12 @@ const routes = [
         exact: true,
         component: AddEquipments,
         key: "add-equipments",
+      },
+      {
+        path: "/admin/equipment/:id",
+        exact: true,
+        component: EquipmentDetailsView,
+        key: "equipments-details-view",
       },
       {
         path: "/admin/location",

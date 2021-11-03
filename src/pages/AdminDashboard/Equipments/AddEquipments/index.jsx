@@ -1,5 +1,6 @@
 import React from "react";
 import clsx from "clsx";
+import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import { useMutation } from "react-query";
 import {
@@ -43,6 +44,7 @@ export default function AddEquipments() {
       data: data,
       token: authToken, //This is our authToken which is used for api authentication, remove if you dont need
     };
+    toast.success("Added Equipment Successfully"); // Here we added Alert message if Equipment add.(its temporary you can add it everywhere based on condition)
     addNewEquipmentMutation(query);
   };
 
