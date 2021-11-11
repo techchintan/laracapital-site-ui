@@ -1,5 +1,6 @@
 import React from "react";
 import clsx from "clsx";
+import { AutoComplete } from "antd";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import { useMutation } from "react-query";
@@ -50,6 +51,30 @@ export default function AddEquipments() {
 
   // eslint-disable-next-line no-console
   console.log(addedEquipmentData, "addedEquipmentData", isAddedSuccessfully);
+
+  const options = [
+    {
+      value: "Jessamine Forbes",
+    },
+    {
+      value: "Evan Munoz",
+    },
+    {
+      value: "Darryl Gibson",
+    },
+    {
+      value: "Arjun Reddy",
+    },
+    {
+      value: "Marah Pennington",
+    },
+    {
+      value: "Kyra Herman",
+    },
+    {
+      value: "Arjun Vaisya",
+    },
+  ];
 
   return (
     <CRow>
@@ -193,6 +218,28 @@ export default function AddEquipments() {
                   </CInputGroup>
                   <CFormText className="help-block text-danger" color="danger">
                     {getErrorMessage(errors, "employeeId", "Employee Id")}
+                  </CFormText>
+                </CCol>
+              </CRow>
+              <CRow className="py-2">
+                <CCol className="col-3">Employee Name</CCol>
+                <CCol className="col-6">
+                  <CInputGroup>
+                    <AutoComplete
+                      style={{
+                        width: 1000,
+                      }}
+                      options={options}
+                      placeholder="Enter employee name"
+                      filterOption={(inputValue, option) =>
+                        option.value
+                          .toUpperCase()
+                          .indexOf(inputValue.toUpperCase()) !== -1
+                      }
+                    />
+                  </CInputGroup>
+                  <CFormText className="help-block text-danger" color="danger">
+                    {getErrorMessage(errors, "employeeName", "Employee Name")}
                   </CFormText>
                 </CCol>
               </CRow>

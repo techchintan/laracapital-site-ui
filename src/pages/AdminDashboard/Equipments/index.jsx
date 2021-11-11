@@ -35,7 +35,7 @@ export default function Equipments() {
             <CDataTable
               tableFilter
               itemsPerPageSelect
-              itemsPerPage={5}
+              itemsPerPage={10}
               hover
               sorter
               pagination
